@@ -1,0 +1,28 @@
+🎥 Q12: “Global Must-Watch 🌍🎬”
+
+Points: 💎 20 points
+
+Task:
+For every language, crown the ultimate must-watch movie:
+
+🗣️ Language
+
+🎬 Title
+
+📅 Release Year
+
+⭐ Highest Rating
+
+Only 1 movie per language makes the cut → the one with the highest rating (if tied, pick the earliest release).
+
+💡 Hints:
+
+Join Movies + Ratings by movie_id.
+
+Use ROW_NUMBER() to rank movies per language by rating DESC, tie-breaking with release year ASC.
+
+Pick only rn = 1 → the champ movie per language.
+
+Sort results alphabetically by language.
+
+⚡ Difficulty: Polyglot Cinephile 🎞️✨
