@@ -1,0 +1,32 @@
+🎥 Q9: “Actor’s Hall of Fame” ✨
+
+Points: 💎 25 points
+
+Task:
+For every actor, spill their most successful movie tea:
+
+🎬 Movie title
+
+🧑‍🎤 Actor name
+
+💰 Revenue (highest they’ve ever bagged)
+
+⭐ Average rating (but only if it’s > 7.5 → because we don’t do flop hits here 😌)
+
+So basically:
+
+Only pick movies that are critically acclaimed (>7.5 avg rating).
+
+Out of those, crown the one movie with max revenue per actor.
+
+💡 Hints:
+
+Step 1: Build a CTE with all actor–movie combos + their avg rating + revenue.
+
+Step 2: Filter where avg_rating > 7.5.
+
+Step 3: Use ROW_NUMBER() partitioned by actor to rank by revenue DESC.
+
+Step 4: Take only rn = 1 for the 🏆 winning movie per actor.
+
+⚡ Difficulty: Star-Studded Challenge 🌌
