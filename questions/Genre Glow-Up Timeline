@@ -1,0 +1,32 @@
+🎬 Q8: "Genre Glow-Up Timeline"
+
+Points: 💎 30 points
+
+Task:
+For each genre, give me the ultimate timeline + crown jewels:
+
+🎉 First Movie Ever (title, year, revenue) → the genre’s baby debut moment
+
+🕰️ Latest Release (title, year, revenue) → the fresh hot drop
+
+👑 Top-Grossing Movie (title, year, revenue) → the money-maker, the diva, the Beyoncé of that genre
+
+So your output should flex:
+
+Genre
+
+First movie + year + revenue
+
+Latest movie + year + revenue
+
+Highest revenue movie + year + revenue
+
+💡 Hints:
+
+Use ROW_NUMBER() over partitions for each genre, ordered by release year and revenue.
+
+Wrap them in a CASE WHEN for that ✨ conditional magic ✨.
+
+Final step: GROUP BY genre to show one row per genre.
+
+⚡ Difficulty: Full Franchise Mode: Cinematic Universe Level
