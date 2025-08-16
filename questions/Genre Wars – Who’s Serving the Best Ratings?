@@ -1,0 +1,22 @@
+🌟 Q2: "Genre Wars – Who’s Serving the Best Ratings?"
+
+Points: 💎 8 points
+
+Task:
+Group movies by their genre and spill the tea:
+
+🎬 How many unique movies are in that genre
+
+🌟 What’s the average rating (make it neat, round it to 2 decimals)
+
+🧑‍🤝‍🧑 How many distinct users actually gave reviews
+
+This isn’t just “what’s popular,” it’s giving who dominates the cinematic runway genre by genre. 👠
+
+💡 Hint:
+
+Use COUNT(DISTINCT movie_id) to avoid over-counting queens.
+
+AVG is your bff for ratings.
+
+Don’t forget those distinct user_ids — no double-dipping tea ☕.
