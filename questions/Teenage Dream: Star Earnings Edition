@@ -1,0 +1,40 @@
+🎥 Q14: “Teenage Dream: Star Earnings Edition 🌟”
+
+Points: 💎 30 points
+
+Task:
+Find the actors who made money during their teenage years (6–18 years old) from acting. Their earnings depend on the role type:
+
+🎭 Lead Role → earns 40% of revenue
+
+🎭 Supporting Role → earns 30% of revenue
+
+🎭 Cameo Role → earns 10% of revenue
+
+For each teen actor, show:
+
+🆔 Actor ID
+
+🧑‍🎤 Actor Name
+
+💼 Lead Earnings
+
+💼 Supporting Earnings
+
+💼 Cameo Earnings
+
+(Only include actors who earned something during their teenage years 💵✨)
+
+💡 Hints:
+
+Join Actors, Movie_Cast, Movies, and Box_Office.
+
+Use release_year - birth_year to check if the actor was 6–18 years old at release.
+
+Multiply revenue by % based on role type → SUM them up per actor.
+
+Exclude actors with 0 teen earnings (HAVING clause check).
+
+Order by actor_id for neatness.
+
+⚡ Difficulty: Child Star Hustler Level 🎤🎬
