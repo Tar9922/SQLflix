@@ -1,0 +1,25 @@
+WITH ActorMovie AS (
+    SELECT 
+        ac.actor_id,
+        ac.name AS actor_name,
+        mv.movie_id,
+        mv.title,
+        bx.revenue_million,
+        AVG(rt.rating) AS avg_rating
+    FROM Actors ac
+    JOIN Movie_Cast mc  ON mc.actor_id = ac.actor_id
+    JOIN Movies mv      ON mv.movie_id = mc.movie_id
+    JOIN Box_Office bx  ON bx.movie_id = mv.movie_id
+    JOIN Ratings rt     ON rt.movie_id = mv.movie_id
+    GROUP BY ac.actor_id, ac.name, mv.movie_id, mv.title, bx.revenue_million
+),
+Filtered AS (
+    SELECT *,
+           ROW_NUMBER() OVER (PARTITION BY actor_id ORDER BY revenue_million DESC) AS rn
+    FROM ActorMovie
+    WHERE avg_rating > 7.5      -- only consider well-rated movies
+)
+SELECT actor_name, title, revenue_million, avg_rating
+FROM Filtered
+WHERE rn = 1
+ORDER BY revenue_million DESC, actor_name;
