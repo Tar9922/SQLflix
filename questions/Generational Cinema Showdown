@@ -1,0 +1,36 @@
+🎥 Q15: “Generational Cinema Showdown 👶🧑‍🎤👵”
+
+Points: 💎 50 points (Final Boss)
+
+Task:
+Categorize movies into generational buckets (Millennials, Gen Z, and Gen Alpha) based on their release years, and compare their cinematic power.
+
+For each generation, spill the stats tea:
+
+🎬 Total Movies Count
+
+💰 Total Revenue (sum across all movies)
+
+⭐ Average Rating
+
+Generational definitions:
+
+👩‍🎤 Millennials → Movies released 1980–1996
+
+🧑 Gen Z → Movies released 1997–2012
+
+👶 Gen Alpha → Movies released 2013+
+
+💡 Hints:
+
+Use 3 SELECT blocks with WHERE release_year filters per generation.
+
+COUNT(DISTINCT movie_id) → to avoid double-counting.
+
+SUM(revenue_million) → generation’s total box office flex.
+
+AVG(rating) → average audience love 💕.
+
+Tie them all together with UNION ALL.
+
+⚡ Difficulty: Final Boss Level 👑🎮 — cross-gen cinematic war!
