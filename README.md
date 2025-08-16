@@ -1,2 +1,2 @@
 # SQLflix
-🎬 SQL queries that slay — from average ratings to teenage actors making bank 💸✨
+🎬 A 15-question SQL movie quiz 🍿 | from basic joins to diva-level analytics ✨
