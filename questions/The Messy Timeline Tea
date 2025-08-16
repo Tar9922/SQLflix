@@ -1,0 +1,20 @@
+🚨 Q4: "The Messy Timeline Tea"
+
+Points: 💥 12 points
+
+Task:
+Somebody’s lying in the database 👀. Find the suspicious cases where:
+
+🎬 A movie was apparently released before the actor was even born (umm time travel??).
+
+👶 Or, the actor was cast when they were less than 5 years old (a literal toddler star?).
+
+Your job is to spill the tea by listing out those fishy pairings: movie title, release year, actor name, and their birth year.
+
+💡 Hints:
+
+Use a simple WHERE clause to sniff out those errors.
+
+Think: release_year < birth_year or release_year - birth_year < 5.
+
+This is less about math and more about catching shady business in the data 📉.
