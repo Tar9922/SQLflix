@@ -1,0 +1,26 @@
+🎥 Q13: “Box Office Oopsies 💸➡️🎖️”
+
+Points: 💎 20 points
+
+Task:
+Find the movies that flopped financially (budget > revenue) but still earned critical love (avg rating > 7).
+
+For each such movie, spill the details:
+
+🎬 Title
+
+💰 Budget vs Revenue
+
+⭐ Average Rating
+
+💡 Hints:
+
+Join Movies, Box_Office, and Ratings.
+
+Only include cases where budget_million > revenue_million.
+
+Group by movie and calculate AVG(rating) → filter to keep only > 7.
+
+Sort results by avg_rating DESC to spotlight the most loved flops.
+
+⚡ Difficulty: Cult Classic Connoisseur 🍿✨
