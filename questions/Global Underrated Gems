@@ -1,0 +1,36 @@
+🎥 Q10: “Global Underrated Gems” 🌍
+
+Points: 💎 30 points
+
+Task:
+Find the most budgeted underrated films for Japanese, English, and French languages.
+
+👉 Definition of underrated:
+
+Low revenue (below average of all movies 💸)
+
+High ratings (above average of all ratings ⭐)
+
+For each of the three languages, pick just one movie:
+
+🎬 Title
+
+🌐 Language
+
+💰 Budget
+
+📉 Revenue
+
+⭐ Average rating
+
+💡 Hints:
+
+Build a MovieStats CTE with budget, revenue, avg_rating per movie.
+
+Apply the underrated filter (low revenue, high rating).
+
+Use ROW_NUMBER() partitioned by language to pick the highest budget film per language.
+
+Return only rn = 1 for each language.
+
+⚡ Difficulty: Hidden Gems Challenge 💎🌌
