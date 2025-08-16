@@ -1,0 +1,9 @@
+SELECT 
+    genre, 
+    COUNT(DISTINCT mv.movie_id) AS movie_count, 
+    ROUND(AVG(rating), 2) AS average_rating, 
+    COUNT(DISTINCT user_id) AS reviews_given
+FROM Movies mv
+JOIN Ratings rt 
+    ON mv.movie_id = rt.movie_id
+GROUP BY genre;
