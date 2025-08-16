@@ -1,0 +1,32 @@
+🎭 Q7: "First Lead Role Glow-Up (or Glow-Down?)"
+
+Points: 🌟 25 points
+
+Task:
+Find the actors who starred in their first ever lead role and check whether their career debut movie was a hit or a miss.
+
+Criteria for success:
+
+If the average rating ≥ 8 ⭐ OR the box office revenue ≥ 100 million 💸 → it's a Successful start.
+
+Otherwise → it’s Unsuccessful (ouch, tough luck bestie 💔).
+
+Your output should reveal:
+
+Actor’s name
+
+Their first lead movie title 🎬
+
+The movie’s revenue & average rating
+
+And a spicy verdict: “Successful” or “Unsuccessful” ✨
+
+💡 Hints:
+
+Use ROW_NUMBER() partitioned by actor to grab their first lead movie chronologically.
+
+Aggregate ratings with AVG().
+
+Join across actors, cast, movies, ratings, and box office like a true SQL socialite 🕸️.
+
+✨ Difficulty: Career-Defining Level: Legendary
