@@ -1,0 +1,12 @@
+SELECT 
+    title, 
+    release_year, 
+    name, 
+    birth_year
+FROM Movies mv
+JOIN Movie_Cast mc 
+    ON mc.movie_id = mv.movie_id
+JOIN Actors ac 
+    ON ac.actor_id = mc.actor_id
+WHERE release_year < birth_year 
+   OR release_year - birth_year < 5;
