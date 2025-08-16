@@ -1,0 +1,20 @@
+SELECT
+    mv.movie_id,
+    title,
+    COUNT(CASE 
+            WHEN YEAR(rt.rating_date) - mv.release_year BETWEEN 0 AND 5 
+            THEN 1 
+         END) AS "1-5 years",
+    COUNT(CASE 
+            WHEN YEAR(rt.rating_date) - mv.release_year BETWEEN 5 AND 10
+            THEN 1 
+         END) AS "5-10 years",
+    COUNT(CASE 
+            WHEN YEAR(rt.rating_date) - mv.release_year > 10
+            THEN 1 
+         END) AS "Higher"
+FROM Movies mv
+JOIN Ratings rt 
+    ON mv.movie_id = rt.movie_id
+GROUP BY mv.movie_id, title
+ORDER BY mv.movie_id;
