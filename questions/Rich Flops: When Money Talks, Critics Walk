@@ -1,0 +1,24 @@
+🎬 Q6: "Rich Flops: When Money Talks, Critics Walk"
+
+Points: 💥 20 points
+
+Task:
+We wanna find movies that were box office rich 💰 but review poor 💔. Specifically:
+
+Movies that earned above the average revenue 🤑.
+
+Movies with an average rating less than 5 (like... unwatchable, but they still made bank).
+
+Your output should show the movie ID, title, its revenue, and its average rating (aka the tea 🍵).
+
+💡 Hints:
+
+Use a variable (@Average_Revenue) to calculate the average across all movies.
+
+Build a CTE to compute average ratings per movie.
+
+Then join it all up and filter with the conditions (rich but flop).
+
+Don’t forget: Order by lowest rating first so we see the true disasters on top 🔝.
+
+✨ Difficulty: Cinematic Roast Level: Expert
