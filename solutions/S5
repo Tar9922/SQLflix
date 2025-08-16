@@ -1,0 +1,16 @@
+SELECT 
+    ac.actor_id, 
+    ac.name,
+    SUM(CASE WHEN mc.role_name = 'Lead' 
+             THEN bx.revenue_million * 0.4 END) AS Lead_Revenue,
+    SUM(CASE WHEN mc.role_name = 'Supporting' 
+             THEN bx.revenue_million * 0.3 END) AS Supporting_Revenue,
+    SUM(CASE WHEN mc.role_name = 'Cameo' 
+             THEN bx.revenue_million * 0.1 END) AS Cameo_Revenue
+FROM Actors ac 
+JOIN Movie_Cast mc 
+    ON mc.actor_id = ac.actor_id
+JOIN Box_Office bx 
+    ON bx.movie_id = mc.movie_id
+GROUP BY ac.actor_id, ac.name
+ORDER BY ac.actor_id;
