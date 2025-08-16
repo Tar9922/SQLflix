@@ -1,0 +1,14 @@
+🌟 Q1: "The First Impression Always Counts"
+
+Points: 🪩 5 points
+
+Task:
+Find out when each movie got its very first review (aka the earliest rating date). For every movie title, show:
+
+the title
+
+the first review date (not the average, not the last — the first)
+
+And don’t forget to keep it chic — order them by the first review date so we can see who debuted earliest. 🎬
+
+💡 Hint: Think about the MIN function, bby. Earliest dates = minimum dates. Pair it with GROUP BY.
