@@ -1,1 +1,5 @@
+Greetings!
 
+Before you continue downloading the .csv files, please set up Visual Studio 2022 for SSIS (SQL Server Integration Services) and SSMS (SQL Server Management Studio)
+
+Consider entering the data through SSIS for smooth and uninterrupted insertion.
