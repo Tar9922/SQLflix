@@ -1,0 +1,37 @@
+SELECT 
+    ac.actor_id,
+    ac.name,
+    COALESCE(SUM(CASE 
+        WHEN (release_year - birth_year BETWEEN 6 AND 18) AND role_name = 'Lead' 
+        THEN revenue_million * 0.4 
+    END), 0) AS lead_earnings,
+    COALESCE(SUM(CASE 
+        WHEN (release_year - birth_year BETWEEN 6 AND 18) AND role_name = 'Supporting' 
+        THEN revenue_million * 0.3 
+    END), 0) AS support_earnings,
+    COALESCE(SUM(CASE 
+        WHEN (release_year - birth_year BETWEEN 6 AND 18) AND role_name = 'Cameo' 
+        THEN revenue_million * 0.1 
+    END), 0) AS cameo_earnings
+FROM Actors ac
+JOIN Movie_Cast mc 
+    ON ac.actor_id = mc.actor_id
+JOIN Movies mv 
+    ON mv.movie_id = mc.movie_id
+JOIN Box_Office bx 
+    ON bx.movie_id = mv.movie_id
+GROUP BY ac.actor_id, ac.name
+HAVING 
+    COALESCE(SUM(CASE 
+        WHEN (release_year - birth_year BETWEEN 6 AND 18) AND role_name = 'Lead' 
+        THEN revenue_million * 0.4 
+    END), 0)
+  + COALESCE(SUM(CASE 
+        WHEN (release_year - birth_year BETWEEN 6 AND 18) AND role_name = 'Supporting' 
+        THEN revenue_million * 0.3 
+    END), 0)
+  + COALESCE(SUM(CASE 
+        WHEN (release_year - birth_year BETWEEN 6 AND 18) AND role_name = 'Cameo' 
+        THEN revenue_million * 0.1 
+    END), 0) > 0
+ORDER BY ac.actor_id;
