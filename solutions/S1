@@ -1,0 +1,8 @@
+SELECT 
+    title, 
+    MIN(rating_date) AS first_review_date
+FROM Movies mv
+JOIN Ratings rt 
+    ON mv.movie_id = rt.movie_id
+GROUP BY title, mv.movie_id
+ORDER BY first_review_date;
