@@ -1,0 +1,14 @@
+SELECT 
+    mv.title, 
+    bx.budget_million, 
+    bx.revenue_million, 
+    ROUND(AVG(rt.rating), 2) AS avg_rating
+FROM Movies mv
+JOIN Box_Office bx 
+    ON mv.movie_id = bx.movie_id
+JOIN Ratings rt 
+    ON rt.movie_id = mv.movie_id
+WHERE bx.budget_million > bx.revenue_million
+GROUP BY mv.title, bx.budget_million, bx.revenue_million
+HAVING AVG(rt.rating) > 7
+ORDER BY avg_rating DESC;
