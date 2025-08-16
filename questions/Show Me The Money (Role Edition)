@@ -1,0 +1,24 @@
+💰 Q5: "Show Me The Money (Role Edition)"
+
+Points: 🔥 15 points
+
+Task:
+Let’s figure out how much the actors bagged 💼 based on their roles across movies.
+
+🌟 Lead actors secure 40% of the box office revenue (main character energy).
+
+💃 Supporting actors get 30% (still iconic, just not the icon).
+
+👀 Cameo stars snatch 10% (blink-and-you-miss-it but still got paid).
+
+Your mission is to display each actor’s name, ID, and their total revenue across all roles they’ve ever played.
+
+💡 Hints:
+
+Use CASE WHEN inside SUM() for conditional role-based earnings.
+
+Don’t forget to GROUP BY actor so their totals stack up nicely.
+
+Think of it like splitting a pizza 🍕 where leads eat almost half, supports get a big slice, cameos nibble.
+
+✨ Difficulty: Data Tycoon Level: Hard-ish
