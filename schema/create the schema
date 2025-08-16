@@ -1,0 +1,69 @@
+-- ===============================================
+-- 1️⃣ Create Database
+-- ===============================================
+CREATE DATABASE SQLflix;
+GO
+
+USE SQLflix;
+GO
+
+-- ===============================================
+-- 2️⃣ Create Movies Table
+-- ===============================================
+CREATE TABLE Movies (
+    movie_id INT IDENTITY(1,1) PRIMARY KEY,
+    title NVARCHAR(255) NOT NULL,
+    release_year INT NOT NULL,
+    genre NVARCHAR(100),
+    duration_minutes INT,
+    language NVARCHAR(50)
+);
+GO
+
+-- ===============================================
+-- 3️⃣ Create Actors Table
+-- ===============================================
+CREATE TABLE Actors (
+    actor_id INT IDENTITY(1,1) PRIMARY KEY,
+    name NVARCHAR(255) NOT NULL,
+    birth_year INT,
+    nationality NVARCHAR(100)
+);
+GO
+
+-- ===============================================
+-- 4️⃣ Create Movie_Cast Table
+-- ===============================================
+CREATE TABLE Movie_Cast (
+    movie_id INT NOT NULL,
+    actor_id INT NOT NULL,
+    role_name NVARCHAR(50) NOT NULL,
+    CONSTRAINT PK_MovieCast PRIMARY KEY (movie_id, actor_id),
+    CONSTRAINT FK_MovieCast_Movie FOREIGN KEY (movie_id) REFERENCES Movies(movie_id),
+    CONSTRAINT FK_MovieCast_Actor FOREIGN KEY (actor_id) REFERENCES Actors(actor_id)
+);
+GO
+
+-- ===============================================
+-- 5️⃣ Create Ratings Table
+-- ===============================================
+CREATE TABLE Ratings (
+    rating_id INT IDENTITY(1,1) PRIMARY KEY,
+    movie_id INT NOT NULL,
+    user_id INT NOT NULL,
+    rating FLOAT CHECK(rating >= 0 AND rating <= 10),
+    rating_date DATE NOT NULL,
+    CONSTRAINT FK_Ratings_Movie FOREIGN KEY (movie_id) REFERENCES Movies(movie_id)
+);
+GO
+
+-- ===============================================
+-- 6️⃣ Create Box_Office Table
+-- ===============================================
+CREATE TABLE Box_Office (
+    movie_id INT PRIMARY KEY,
+    budget_million FLOAT,
+    revenue_million FLOAT,
+    CONSTRAINT FK_BoxOffice_Movie FOREIGN KEY (movie_id) REFERENCES Movies(movie_id)
+);
+GO
