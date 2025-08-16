@@ -1,0 +1,32 @@
+🎥 Q11: “Generational Impact” 🕰️
+
+Points: 💎 35 points
+
+Task:
+Some movies don’t just release, they echo through generations. Let’s measure that!
+
+For every movie, show how many reviews it gathered in these windows (from release year):
+
+🍼 1–5 years
+
+👩‍💼 5–10 years
+
+👴 10+ years
+
+Return:
+
+🎬 Movie title
+
+📊 Review counts in each window as separate columns
+
+💡 Hints:
+
+Join Movies + Ratings using movie_id.
+
+Use CASE WHEN inside COUNT() to bucket reviews by time difference.
+
+Group by movie.
+
+Order neatly by movie_id.
+
+⚡ Difficulty: Timeless Classics Challenge ⏳🌟
