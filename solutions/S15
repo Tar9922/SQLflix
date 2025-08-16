@@ -1,0 +1,33 @@
+SELECT 
+    'Millennials' AS Category,
+    COUNT(distinct mv.movie_id) AS movies,
+    SUM(revenue_million) AS revenue,
+    ROUND(AVG(rating), 2) AS avg_rating
+FROM Movies mv
+JOIN Box_Office bx ON mv.movie_id = bx.movie_id
+JOIN Ratings rt ON rt.movie_id = mv.movie_id
+WHERE release_year BETWEEN 1980 AND 1996  -- no overlap with GenZ
+
+UNION ALL
+
+SELECT 
+    'GenZ',
+    COUNT(distinct mv.movie_id) AS movies,
+    SUM(revenue_million) AS revenue,
+    ROUND(AVG(rating), 2) AS avg_rating
+FROM Movies mv
+JOIN Box_Office bx ON mv.movie_id = bx.movie_id
+JOIN Ratings rt ON rt.movie_id = mv.movie_id
+WHERE release_year BETWEEN 1997 AND 2012
+
+UNION ALL
+
+SELECT 
+    'GenALPHA',
+    COUNT(distinct mv.movie_id) AS movies,
+    SUM(revenue_million) AS revenue,
+    ROUND(AVG(rating), 2) AS avg_rating
+FROM Movies mv
+JOIN Box_Office bx ON mv.movie_id = bx.movie_id
+JOIN Ratings rt ON rt.movie_id = mv.movie_id
+WHERE release_year >= 2013;
