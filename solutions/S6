@@ -1,0 +1,25 @@
+DECLARE @Average_Revenue FLOAT;
+
+-- Calculate average revenue
+SELECT @Average_Revenue = AVG(revenue_million)
+FROM Box_Office;
+
+-- CTE to calculate average ratings per movie
+WITH Rating_Calculation AS (
+    SELECT movie_id, AVG(rating) AS avg_rating
+    FROM Ratings
+    GROUP BY movie_id
+)
+SELECT  
+    MV.movie_id,
+    MV.title, 
+    BX.revenue_million, 
+    RC.avg_rating
+FROM Movies MV
+JOIN Box_Office BX 
+    ON MV.movie_id = BX.movie_id
+JOIN Rating_Calculation RC 
+    ON RC.movie_id = MV.movie_id
+WHERE BX.revenue_million > @Average_Revenue
+  AND RC.avg_rating < 5
+ORDER BY RC.avg_rating ASC;
