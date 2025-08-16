@@ -1,0 +1,22 @@
+🎭 Q3: "Who’s Owning the Spotlight?"
+
+Points: 🌈 10 points
+
+Task:
+For each movie, reveal the full cast category breakdown:
+
+👑 How many Leads carried the crown
+
+🤝 How many Supporting babes had their moment
+
+🎉 And the iconic Cameo legends who slid in for a quick slay
+
+Basically… it’s a red carpet headcount for every movie ✨
+
+💡 Hints:
+
+Use COUNT(CASE WHEN ...) to slay each role category individually.
+
+Group by movie_id because every movie’s cast list deserves its own spotlight 💃.
+
+An ORDER BY movie_id will line them up neat, like seats at an award show.
