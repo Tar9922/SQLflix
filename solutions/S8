@@ -1,0 +1,32 @@
+WITH Genre_Stats AS (
+    SELECT 
+        mv.genre,
+        mv.title,
+        mv.release_year,
+        bx.revenue_million,
+        ROW_NUMBER() OVER (PARTITION BY mv.genre ORDER BY mv.release_year ASC) AS first_movie_rank,
+        ROW_NUMBER() OVER (PARTITION BY mv.genre ORDER BY mv.release_year DESC) AS latest_movie_rank,
+        ROW_NUMBER() OVER (PARTITION BY mv.genre ORDER BY bx.revenue_million DESC) AS top_revenue_rank
+    FROM Movies mv
+    JOIN Box_Office bx 
+        ON mv.movie_id = bx.movie_id
+)
+SELECT 
+    g.genre,
+    -- First movie
+    MAX(CASE WHEN g.first_movie_rank = 1 THEN g.title END) AS first_movie_title,
+    MAX(CASE WHEN g.first_movie_rank = 1 THEN g.release_year END) AS first_movie_year,
+    MAX(CASE WHEN g.first_movie_rank = 1 THEN g.revenue_million END) AS first_movie_revenue,
+
+    -- Latest movie
+    MAX(CASE WHEN g.latest_movie_rank = 1 THEN g.title END) AS latest_movie_title,
+    MAX(CASE WHEN g.latest_movie_rank = 1 THEN g.release_year END) AS latest_movie_year,
+    MAX(CASE WHEN g.latest_movie_rank = 1 THEN g.revenue_million END) AS latest_movie_revenue,
+
+    -- Top revenue movie
+    MAX(CASE WHEN g.top_revenue_rank = 1 THEN g.title END) AS top_revenue_title,
+    MAX(CASE WHEN g.top_revenue_rank = 1 THEN g.top_revenue_rank END) AS top_revenue_year,
+    MAX(CASE WHEN g.top_revenue_rank = 1 THEN g.revenue_million END) AS top_revenue
+FROM Genre_Stats g
+GROUP BY g.genre
+ORDER BY g.genre;
