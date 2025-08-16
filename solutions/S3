@@ -1,0 +1,8 @@
+SELECT 
+    movie_id,
+    COUNT(CASE WHEN role_name = 'Lead' THEN 1 END) AS Lead,
+    COUNT(CASE WHEN role_name = 'Supporting' THEN 1 END) AS Supporting,
+    COUNT(CASE WHEN role_name = 'Cameo' THEN 1 END) AS Cameo
+FROM Movie_Cast
+GROUP BY movie_id
+ORDER BY movie_id;
