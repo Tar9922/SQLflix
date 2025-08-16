@@ -1,0 +1,47 @@
+DECLARE @Hit_Revenue FLOAT = 100;  -- static threshold for big hit in millions
+
+-- Step 1: CTE to get each actor's first *lead* movie
+WITH Actor_First_Movie AS (
+    SELECT  
+        AC.actor_id,
+        AC.name AS actor_name,
+        MC.movie_id,
+        MV.title,
+        MV.release_year,
+        ROW_NUMBER() OVER (PARTITION BY AC.actor_id ORDER BY MV.release_year ASC) AS rn
+    FROM Actors AC
+    JOIN Movie_Cast MC 
+        ON MC.actor_id = AC.actor_id
+    JOIN Movies MV 
+        ON MV.movie_id = MC.movie_id
+    WHERE MC.role_name = 'Lead'
+)
+-- Step 2: Only keep first movies and join ratings + box office
+, Actor_First_Details AS (
+    SELECT 
+        AFM.actor_id,
+        AFM.actor_name,
+        AFM.movie_id,
+        AFM.title,
+        BX.revenue_million,
+        AVG(RT.rating) AS avg_rating
+    FROM Actor_First_Movie AFM
+    JOIN Ratings RT 
+        ON RT.movie_id = AFM.movie_id
+    JOIN Box_Office BX 
+        ON BX.movie_id = AFM.movie_id
+    WHERE AFM.rn = 1
+    GROUP BY AFM.actor_id, AFM.actor_name, AFM.movie_id, AFM.title, BX.revenue_million
+)
+-- Step 3: Apply success criteria
+SELECT
+    actor_name,
+    title AS first_movie,
+    revenue_million,
+    avg_rating,
+    CASE 
+        WHEN avg_rating >= 8 OR revenue_million >= @Hit_Revenue THEN 'Successful'
+        ELSE 'Unsuccessful'
+    END AS career_start
+FROM Actor_First_Details
+ORDER BY actor_name;
