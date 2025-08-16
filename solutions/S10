@@ -1,0 +1,25 @@
+WITH MovieStats AS (
+    SELECT 
+        mv.movie_id,
+        mv.title,
+        mv.language,
+        bx.budget_million,
+        bx.revenue_million,
+        ROUND(AVG(rt.rating), 2) AS avg_rating
+    FROM Movies mv
+    JOIN Box_Office bx ON bx.movie_id = mv.movie_id
+    JOIN Ratings rt    ON rt.movie_id = mv.movie_id
+    WHERE mv.language IN ('Japanese', 'English', 'French')
+    GROUP BY mv.movie_id, mv.title, mv.language, bx.budget_million, bx.revenue_million
+),
+Underrated AS (
+    SELECT *,
+           ROW_NUMBER() OVER (PARTITION BY language ORDER BY budget_million DESC) AS rn
+    FROM MovieStats
+    WHERE revenue_million < (SELECT AVG(revenue_million) FROM Box_Office) -- low revenue
+      AND avg_rating > (SELECT AVG(rating) FROM Ratings)                   -- high rating
+)
+SELECT language, title, budget_million, revenue_million, avg_rating
+FROM Underrated
+WHERE rn = 1
+ORDER BY language;
