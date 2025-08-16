@@ -1,0 +1,22 @@
+WITH RankedMovies AS (
+    SELECT 
+        mv.language,
+        mv.title,
+        mv.release_year,
+        rt.rating,
+        ROW_NUMBER() OVER (
+            PARTITION BY mv.language
+            ORDER BY rt.rating DESC, mv.release_year ASC
+        ) AS rn
+    FROM Movies mv
+    JOIN Ratings rt 
+        ON mv.movie_id = rt.movie_id
+)
+SELECT 
+    language,
+    title,
+    release_year,
+    rating
+FROM RankedMovies
+WHERE rn = 1
+ORDER BY language;
